@@ -2,6 +2,7 @@
 $color-black : #000000;
 $color-primary : #d3ab55;
 $color-orange : #f08040;
+$color-text-grey : #808080;
 $color-dark : #203040;
 $color-white : #ffffff; 
 @mixin flex-layout {
@@ -33,5 +34,4 @@ body{
 }
 a{
     text-decoration: none;
-    color:$color-white;
 }
