@@ -8,10 +8,8 @@ const routes = {
 }
 const router = ()=>{
     const request = parseRequestUrl();
-    const parseurl =(request.resource?`/${request.resource}`:'/')+(request.id?'/:id':'')+''+(request.verb?`/${request.verb}`:'');
-    console.log(parseurl,'parseurl');
-    const screen = routes[parseurl]?routes[parseurl]:Error404Screen
-    console.log(screen,'screen');
+    const parseurl =(request.resource?`/${request.resource}`:'/')+(request.id?'/:id':'')+''+(request.verb?`/${request.verb}`:''); 
+    const screen = routes[parseurl]?routes[parseurl]:Error404Screen;
     const main_container = document.getElementById('main_container');
     main_container.innerHTML = screen.render();
 }
