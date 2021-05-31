@@ -21,12 +21,59 @@
         padding: 0.5rem;
         a{
             font-weight: bold;
+            color:$color-white;
             &:hover{
                 color: $color-orange
             }   
         }
         .brand a{
             font-size: 3rem;
+            color:$color-white;
+        }
+    }
+    main{
+        .products{
+            display:flex;
+            flex-wrap: wrap;
+            list-style: none;
+            padding:0;
+            margin: 0;
+            justify-content: center;
+            li{
+                flex: 0 1 30rem;
+                margin: 1rem;
+                margin-top: 0;
+                height:42rem;
+                border-top: .2rem solid #eee;
+                .product{
+                    display: flex;
+                    flex-direction: column;
+                    justify-content:space-around;
+                    height: 100%;
+                    img{
+                        max-height: 26rem;
+                        max-width: 22rem;
+                        margin-top: 2rem;
+                    }
+                    &-name{
+                        line-height: 2.2rem;
+                    }
+                    &-price{
+                        font-size: 2rem;
+                    }
+                    &-brand{
+                        font-size: 1.2rem;
+                        color:$color-text-grey;
+                        line-height: 2.2rem;
+                    }
+                    a{
+                        color:$color-dark
+                    }
+                    a:hover{
+                        color:$color-orange
+                    }
+                }
+            }
         }
     }
     footer{
@@ -34,4 +81,5 @@
         @include flex-layout;
         color:$color-white;
     }
+     
 }
