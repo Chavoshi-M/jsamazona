@@ -1,6 +1,6 @@
-const express = require('express') 
-const app = express();
-const data = require('./data.js')  
+import express from 'express';
+const app = express(); 
+import data from './data.js'
 app.get('/api/products',(req,res)=>{
     res.send(data.products)
 })
