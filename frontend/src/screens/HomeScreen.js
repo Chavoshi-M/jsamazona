@@ -1,21 +1,22 @@
-import axios from 'axios'
+/* eslint-disable no-underscore-dangle */
+import axios from 'axios';
 
 const HomeScreen = {
-    render:async()=> {
+    render: async () => {
         const res = await axios({
-            url:'http://localhost:5000/api/products',
-            headers:{
-                'Content-Type':'application/json'
-            }
+            url: 'http://localhost:5000/api/products',
+            headers: {
+                'Content-Type': 'application/json',
+            },
         });
         if (!res || res.statusText !== 'OK') {
             return `<div>Error in Getting Data</div>`;
         }
         console.log(res.data);
-        const products = res.data; 
+        const products = res.data;
         return `
             <ul class="products">
-            ${products.map(itm=>`
+            ${products.map(itm => `
                 <li>
                     <div class="product">
                         <a href="/#/product/${itm._id}">
@@ -34,7 +35,7 @@ const HomeScreen = {
                 </li>
             `).join(' ')}
             </ul>
-        `
-    }
-}
+        `;
+    },
+};
 export default HomeScreen;
