@@ -1,26 +1,58 @@
+/* eslint-disable no-use-before-define */
 import { getProduct } from '../api';
 import { getCartItems, setCartItems } from '../localStorage';
-import { parseRequestUrl } from '../utils';
+import { parseRequestUrl, rerender } from '../utils';
 
 const addToCart = (item,forceUpdate=false)=>{
 	let cartItems = getCartItems();
 	const existItem = cartItems.find(x => x.product === item.product);
 	if (existItem) {
-		cartItems = cartItems.map(x => x.product === existItem.product ? item : x)
+		if (forceUpdate) {
+			cartItems = cartItems.map(x => x.product === existItem.product ? item : x)
+		} 
 	}else{
 		cartItems = [...cartItems,item];
 	}
 	setCartItems(cartItems);
+	if (forceUpdate) {
+		rerender(CartScreen);
+	}
 
+}
+const removeFromCart = id => {
+	const cartItems = getCartItems();
+	const filteredItems = cartItems.filter(x => x.product !== id);
+	setCartItems(filteredItems);
+	if(id  === parseRequestUrl().id){
+		document.location.hash = '/cart';
+	}else{
+		rerender(CartScreen);
+	}
 }
 const CartScreen = {
 	after_render:()=>{
-
+		const qty = document.getElementsByClassName('qty-select');
+		Array.from(qty).forEach(qtySelect => {
+			qtySelect.addEventListener('change', e =>{
+				const item = getCartItems().find(x=>x.product === qtySelect.id);
+				addToCart({...item,qty:Number(e.target.value)},true)
+			})
+		});
+		const deleteBtn = document.getElementsByClassName('delete-btn');
+		Array.from(deleteBtn).forEach(btn => { 
+			btn.addEventListener('click', e =>{ 
+				removeFromCart(btn.id)
+			})
+		});
+		document.getElementById('checkout-btn').addEventListener('click',e=>{
+			document.location.hash = '/signin';
+		})
 	},
 	render:async ()=>{
 		const req = parseRequestUrl();
 		if (req.id) {
 			const product = await getProduct(req.id);
+			console.log(product);
 			addToCart({
 				product:product._id,
 				name:product.name,
@@ -29,8 +61,8 @@ const CartScreen = {
 				qty:1,
 				countInStock:product.countInStock
 			})
-		} 
-		const cartItems = getCartItems(); 
+		}  
+		const cartItems = getCartItems();  
 		return `<div class="content cart">
 			<div class="cart-list">
 				<ul class="cart-list-container">
@@ -53,8 +85,13 @@ const CartScreen = {
 										</a>
 									</div>
 									<div>
-										Qty: <select class="qty-select" id="qty-select">
-										<option>1</option>
+										Qty:  
+										<select class="qty-select" id="${itm.product}">
+										${[...Array(itm.countInStock).keys()].map(x =>
+										  itm.qty === x + 1
+											? `<option selected value="${x + 1}">${x + 1}</option>`
+											: `<option  value="${x + 1}">${x + 1}</option>`
+										)}  
 										</select>
 										<button  class="delete-btn" id="${itm.product}">Delete</button>
 									</div>
