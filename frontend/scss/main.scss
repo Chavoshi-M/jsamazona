@@ -165,6 +165,30 @@
 
             }
         }
+        .form-container{
+            display:flex;
+            justify-content: center;
+            align-items:center;
+            height:100%   ;
+            h1{
+                font-size: 2.5rem;
+            }
+            .form-items{
+                display:flex;
+                flex-direction: column;
+                width: 36rem;
+                padding:2rem;
+                border:0.1rem solid $color-text-grey;
+                border-radius: 0.5rem;
+                list-style: none;
+                li{
+                    display:flex;
+                    flex-direction: column;
+                    margin-bottom: 1rem;
+                    margin-top: 1rem;
+                }
+            }
+        }
     }
     footer{
         background-color:$color-dark;
