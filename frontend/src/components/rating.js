@@ -1,7 +1,6 @@
 /* eslint-disable no-nested-ternary */
 const Rating =  {
 	render: props => {
-		console.log(props);
 		if (!props.value) {
 			return `<div></div>`
 		}

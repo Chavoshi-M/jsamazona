@@ -71,14 +71,49 @@
                     }
                     a:hover{
                         color:$color-orange
+                    } 
+                }
+            }
+        }
+        .content{
+            padding:1rem;
+            .details{
+                display: flex;
+                justify-content:space-between;
+                align-items: flex-start;
+                flex-wrap: wrap;
+                &-img{
+                    flex:2 1 60rem;
+                    img{
+                        max-width: 100%;
+                        width:100%;    
                     }
-                    .rating{
-                        color:#ffc000;
-                        span:last-child{
-                            color:#444444;
-                            font-size: 1.2rem;
-                        }
+                }
+                &-info,
+                &-action{
+                    flex:1 1 30rem;
+                }
+                &-info ul,
+                &-action ul{
+                    padding:0;
+                    list-style: none;
+                }
+                &-info li,
+                &-action li{
+                    margin-bottom: 1rem;
+                }
+                &-action{
+                    border:0.1rem #808080 solid;
+                    border-radius: .5rem;
+                    padding: 1rem;
+                    background-color: $color-bg-grey;
+                    button{
+                        @extend .fw;
                     }
+                }
+                &-info h1{
+                    font-size: 2rem;
+                    margin: 0;
                 }
             }
         }

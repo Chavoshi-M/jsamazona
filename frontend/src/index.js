@@ -9,10 +9,11 @@ const routes = {
 };
 const router = async () => {
     const request = parseRequestUrl();
-    const parseurl = (request.resource ? `/${request.resource}` : '/') + (request.id ? '/:id' : '') + '' + (request.verb ? `/${request.verb}` : '');
+    const parseurl = (request.resource ? `/${request.resource}` : '/') + (request.id ? '/:id' : '') + '' + (request.verb ? `/${request.verb}`: '');
     const screen = routes[parseurl] ? routes[parseurl] : Error404Screen;
     const mainContainer = document.getElementById('main_container');
     mainContainer.innerHTML = await screen.render();
+    await screen.after_render()
 };
 
 window.addEventListener('load', router);

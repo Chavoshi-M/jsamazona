@@ -1,0 +1,19 @@
+.rating{
+	color:#ffc000;
+	span:last-child{
+		color:#444444;
+		font-size: 1.2rem;
+	}
+}
+.fw{
+	width: 100%;
+}
+button.primary {
+    background-color: $color-primary;
+}
+.success{
+	color:$color-success
+}
+.error{
+	color:$color-error
+}
