@@ -29,11 +29,51 @@ const CartScreen = {
 				qty:1,
 				countInStock:product.countInStock
 			})
-		}else{
-
-		}
-		return `<div>cart</div>
-		<div>${getCartItems().length}</div>`;
+		} 
+		const cartItems = getCartItems(); 
+		return `<div class="content cart">
+			<div class="cart-list">
+				<ul class="cart-list-container">
+					<li>
+						<h3>Shopping Cart</h3>
+						<div>Price</div>
+					</li>
+					${
+						cartItems.length === 0 ?
+						`<div>cart Is Empty</div>`:
+						cartItems.map(itm=>`
+							<li>
+								<div class="cart-img">
+									<img src="${itm.image}"/>
+								</div>
+								<div class="cart-name">
+									<div>
+										<a href="/#/product/${itm.product}">
+										${itm.name}
+										</a>
+									</div>
+									<div>
+										Qty: <select class="qty-select" id="qty-select">
+										<option>1</option>
+										</select>
+										<button  class="delete-btn" id="${itm.product}">Delete</button>
+									</div>
+								</div>
+								<div class="cart-price">
+									$${itm.price}
+								</div>
+							</li>
+						`).join('\n')
+					}
+				</ul>
+			</div>
+			<div class="cart-action">
+				<h3>SubTotal(${cartItems.reduce((a,c)=>a+c.qty , 0)} items):
+				$${cartItems.reduce((a,c)=>a+c.qty*c.price , 0)}
+				</h3>
+				<button id="checkout-btn" class="primary">Procced to Checkout</button>
+			</div>
+		</div>`;
 	}
 }
 export default CartScreen;
