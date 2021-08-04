@@ -117,6 +117,54 @@
                 }
             }
         }
+        .cart{
+            display: flex;
+            flex-wrap: wrap;
+            align-items:flex-start;
+            &-list{
+                flex:3 1 60rem;
+                h3{
+                    margin:0
+                }
+                &-container{
+                    padding:1rem;
+                    list-style-type: none;
+                    li{
+                        justify-content:space-between;
+                        display:flex;
+                        padding-bottom: 1rem;
+                        margin-bottom: 1rem;
+                        border-bottom: 0.1rem $color-text-grey solid;
+                        &:first-child{
+                          align-items:flex-end  
+                        } 
+                        img{
+                            max-width: 10rem;
+                            max-height: 10rem; 
+                        }
+                        select,button{
+                            font-size: 1.3rem;
+                            padding:0.5rem
+                        }
+                    }
+                }
+            }
+            &-img{flex:1 1 }
+            &-name{
+                flex:8 1 ;
+                & > div{
+                    padding:1rem
+                }
+            }
+            &-price{flex:8 1 ;text-align: right;}
+            &-action{
+                flex:1 1 20rem;
+                background-color: $color-bg-grey;
+                padding:1rem; 
+                border-radius: 0.5rem;
+
+            }
+        }
     }
     footer{
         background-color:$color-dark;
