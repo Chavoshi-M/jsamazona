@@ -17,3 +17,33 @@ button.primary {
 .error{
 	color:$color-error
 }
+.overlay{
+	display:none;
+	position:fixed;
+	z-index: 1000;
+	top: 0;
+	left:0;
+	height:100%;
+	width:100%;
+	background-color: $color-bg-overaly;
+	&.active{
+       display:flex;
+	   justify-content:center;
+	   align-items: center;
+	   color:$color-white;
+    }
+	& > div{
+		background-color: $color-white;
+		display: flex;
+		flex-direction: column;
+		justify-content:space-around;
+		max-width: 40rem;
+		color:$color-black;
+		border-radius: 0.5rem;
+	}
+
+	& > div > *{
+		margin:2rem
+	}
+	
+}

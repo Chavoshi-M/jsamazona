@@ -1,7 +1,7 @@
 import {parseRequestUrl} from '../utils';
 import {getProduct} from '../api';
 import Rating from '../components/rating';
-const ProductScreen = {
+const ProductScreen = { 
     after_render:()=>{
         const req = parseRequestUrl();
         document.getElementById('add-button').addEventListener('click',()=>{

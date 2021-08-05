@@ -7,6 +7,8 @@ $color-success: #40f040;
 $color-error: #c04040;
 $color-white: #ffffff;
 $color-bg-grey: #f8f8f8;
+$color-bg-overaly: rgba(16,16,16,.5);
+
 @mixin flex-layout {
     display: flex;
     justify-content: center;
@@ -55,4 +57,5 @@ input:hover ,
 button:hover {
     border: 0.1rem #404040 solid;
 } 
+
 

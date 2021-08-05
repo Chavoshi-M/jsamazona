@@ -1,8 +1,10 @@
 
 import Rating from '../components/rating';
+import { hideLoading, showLoading } from '../utils';
 
 const HomeScreen = {
     render: async () => {
+        showLoading();
         const res = await fetch(
              'http://localhost:5000/api/products',{
             method:'GET',
@@ -10,6 +12,7 @@ const HomeScreen = {
                 'Content-type':'application/json'
             }
         });
+        hideLoading();
         if (res.statusText === 'OK') {
             
             return res.json().then(data=>{
