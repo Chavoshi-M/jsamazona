@@ -226,7 +226,10 @@
                     border-radius:0.5rem;
                     background-color: #fcfcfc;
                     padding:1rem;
-                    margin:1rem
+                    margin:1rem;
+                    &:first-child{
+                        margin-top: 0;
+                    }   
                 }
             }
             &-action{

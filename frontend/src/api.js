@@ -66,6 +66,28 @@ export  const register = async postData => {
 		return {error: error.message}
 	}
 }
+export  const createOrder = async orders => { 
+	try { 
+		console.log(orders);
+		const {token} = getUserInfo();
+		const res = await fetch(
+			`${apiUrl}/api/orders`,{
+			method: 'POST', // or 'PUT'
+			headers: {
+				'Content-Type': 'application/json',
+				'Authorization': `Bearer ${token}`
+			},
+			body: JSON.stringify(orders),
+		});   
+		if (res.statusText !== 'Created'){
+			const response = await res.json().then(data=>data); 
+			throw new Error(response.message)
+		}
+		return res.json().then(data => data) 
+	} catch (error) {
+		return {error: error.message}
+	}
+}
 export  const update = async postData => { 
 	try {
 		const {_id,token} = getUserInfo();

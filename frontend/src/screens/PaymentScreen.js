@@ -8,7 +8,7 @@ const PaymentScreen = {
 			setPayment({
 				method
 			});
-			document.location.hash = '/payment'
+			document.location.hash = '/placeorder'
 		}) 
 	},
 	render:()=>{ 
