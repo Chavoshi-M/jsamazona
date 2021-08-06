@@ -3,8 +3,7 @@ import { getUserInfo } from '../localStorage';
 const Header = {
 	after_render:()=>{},
 	render:()=>{
-		const {name} =getUserInfo();
-		console.log(getUserInfo()	);
+		const {name} =getUserInfo(); 
 		return ` <div class="brand">
 				<a href="/#/">jsamazona</a>
 			</div>
