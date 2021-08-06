@@ -22,6 +22,26 @@ export  const getProduct = async id => {
 		return {error: error.message}
 	}
 }
+export  const getOrder = async id => {
+	const {token} = getUserInfo();
+	try {
+		const res = await fetch(
+			`${apiUrl}/api/orders/${id}`,{
+			method:'GET',
+			headers:{
+				'Authorization': `Bearer ${token}`,
+				'Content-type':'application/json'
+			}
+		});    
+		if (res.statusText !== 'OK'){
+			const response = await res.json().then(data=>data); 
+			throw new Error(response.message)
+		}
+		return res.json()
+	} catch (error) {  
+		return {error: error.message}
+	}
+}
 export  const signin = async postData => { 
 	try {
 		const dataPost = { email: postData.email,password:postData.password }; 
@@ -63,6 +83,28 @@ export  const register = async postData => {
 		return res.json().then(data => data) 
 	} catch (error) {  
 		console.log(error);
+		return {error: error.message}
+	}
+}
+export  const createOrder = async orders => { 
+	try { 
+		console.log(orders);
+		const {token} = getUserInfo();
+		const res = await fetch(
+			`${apiUrl}/api/orders`,{
+			method: 'POST', // or 'PUT'
+			headers: {
+				'Content-Type': 'application/json',
+				'Authorization': `Bearer ${token}`
+			},
+			body: JSON.stringify(orders),
+		});   
+		if (res.statusText !== 'Created'){
+			const response = await res.json().then(data=>data); 
+			throw new Error(response.message)
+		}
+		return res.json().then(data => data) 
+	} catch (error) {
 		return {error: error.message}
 	}
 }
