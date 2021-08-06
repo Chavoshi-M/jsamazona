@@ -2,9 +2,11 @@ import Header from './components/Header';
 import CartScreen from './screens/CartScreen';
 import Error404Screen from './screens/Error404Screen';
 import HomeScreen from './screens/HomeScreen';
+import PaymentScreen from './screens/PaymentScreen';
 import ProductScreen from './screens/ProductScreen';
 import ProfileScreen from './screens/ProfileScreen';
 import RegisterScreen from './screens/RegisterScreen';
+import ShippingScreen from './screens/ShippingScreen';
 import SigninScreen from './screens/SigninScreen';
 import { hideLoading, parseRequestUrl, showLoading } from './utils';
 
@@ -14,6 +16,8 @@ const routes = {
     '/cart/:id': CartScreen,
     '/cart': CartScreen,
     '/profile': ProfileScreen,
+    '/payment': PaymentScreen,
+    '/shipping': ShippingScreen,
     '/signin': SigninScreen,
     '/register': RegisterScreen,
 

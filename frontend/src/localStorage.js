@@ -18,3 +18,21 @@ export const clearUserLocalStorage = () => {
 export const getUserInfo = () => {
 	return localStorage.getItem('userInfo') ? JSON.parse(localStorage.getItem('userInfo')) : {_id:'',name:'',email:'',password:'',token:'',isAdmin:''};
 }
+export const getShipping = () => {
+	return localStorage.getItem('shipping') ? JSON.parse(localStorage.getItem('shipping')) : {country:'',city:'',address:'',postalCode:''};
+}
+export const setShipping = ({country='',city='',address='',postalCode=''}) => {
+	localStorage.setItem('shipping',JSON.stringify({
+		country,city,address,postalCode
+	})
+	);
+}
+export const getPayment = () => {
+	return localStorage.getItem('payment') ? JSON.parse(localStorage.getItem('payment')) : {method:'paypal'};
+}
+export const setPayment = ({method='paypal'}) => {
+	localStorage.setItem('payment',JSON.stringify({
+		method
+	})
+	);
+}

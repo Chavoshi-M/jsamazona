@@ -168,7 +168,7 @@
         .form-container{
             display:flex;
             justify-content: center;
-            align-items:center;
+            align-items:flex-start;
             height:100%   ;
             h1{
                 font-size: 2.5rem;
@@ -186,6 +186,22 @@
                     flex-direction: column;
                     margin-bottom: 1rem;
                     margin-top: 1rem;
+                }
+            }
+        }
+        .checkout-steps{
+            display:flex;
+            justify-content:space-between;
+            align-items:center;
+            max-width: 40rem;
+            margin:1rem auto;
+            &>div{
+                border-top: 0.3rem #c0c0c0 solid;
+                flex:1 1 ;
+                padding-top: 1rem;
+                &.active{
+                    color:$color-orange;
+                    border-top-color: $color-orange;
                 }
             }
         }
