@@ -12,6 +12,9 @@ export const setUserInfo = ({_id='',name='',email='',password='',token='',isAdmi
 	})
 	);
 }
+export const clearUserLocalStorage = () => {
+	localStorage.removeItem('userInfo');
+}
 export const getUserInfo = () => {
 	return localStorage.getItem('userInfo') ? JSON.parse(localStorage.getItem('userInfo')) : {_id:'',name:'',email:'',password:'',token:'',isAdmin:''};
 }
